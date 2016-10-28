@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfApplicationTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.solarwinds.com/2007/08/APM">
+	<ApplicationTemplate>
+		<Settings xmlns:s="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<s:KeyValueOfstringSettingValueyR_SGpLPx>
+				<s:Key>__DebugLoggingEnabled</s:Key>
+				<s:Value>
+					<Required>true</Required>
+					<SettingLevel>Template</SettingLevel>
+					<Value>False</Value>
+					<ValueType>Boolean</ValueType>
+					<Key i:nil="true" />
+				</s:Value>
+			</s:KeyValueOfstringSettingValueyR_SGpLPx>
+			<s:KeyValueOfstringSettingValueyR_SGpLPx>
+				<s:Key>__NumberOfLogFilesToKeep</s:Key>
+				<s:Value>
+					<Required>true</Required>
+					<SettingLevel>Template</SettingLevel>
+					<Value>30</Value>
+					<ValueType>Integer</ValueType>
+					<Key i:nil="true" />
+				</s:Value>
+			</s:KeyValueOfstringSettingValueyR_SGpLPx>
+			<s:KeyValueOfstringSettingValueyR_SGpLPx>
+				<s:Key>__Timeout</s:Key>
+				<s:Value>
+					<Required>true</Required>
+					<SettingLevel>Template</SettingLevel>
+					<Value>300</Value>
+					<ValueType>Integer</ValueType>
+					<Key i:nil="true" />
+				</s:Value>
+			</s:KeyValueOfstringSettingValueyR_SGpLPx>
+			<s:KeyValueOfstringSettingValueyR_SGpLPx>
+				<s:Key>__Use64Bit</s:Key>
+				<s:Value>
+					<Required>true</Required>
+					<SettingLevel>Template</SettingLevel>
+					<Value>False</Value>
+					<ValueType>Boolean</ValueType>
+					<Key i:nil="true" />
+				</s:Value>
+			</s:KeyValueOfstringSettingValueyR_SGpLPx>
+		</Settings>
+		<ComponentTemplates>
+			<ComponentTemplate>
+				<ComponentOrder>1</ComponentOrder>
+				<Id>4059</Id>
+				<Name>All sensors</Name>
+				<Settings xmlns:s="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__Disabled</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>False</Value>
+							<ValueType>Boolean</ValueType>
+							<Key>__Disabled</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__CredentialSetId</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>0</Value>
+							<ValueType>String</ValueType>
+							<Key>__CredentialSetId</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__Frequency</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>300</Value>
+							<ValueType>String</ValueType>
+							<Key>__Frequency</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__Timeout</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>300</Value>
+							<ValueType>String</ValueType>
+							<Key>__Timeout</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__UserDescription</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value></Value>
+							<ValueType>String</ValueType>
+							<Key>__UserDescription</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__UserNotes</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value></Value>
+							<ValueType>String</ValueType>
+							<Key>__UserNotes</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>CountAsDifference</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>false</Value>
+							<ValueType>Boolean</ValueType>
+							<Key>CountAsDifference</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>ScriptArguments</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>--host ${IP} --port 4248 --url status.xml</Value>
+							<ValueType>String</ValueType>
+							<Key>ScriptArguments</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>ScriptBody</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>'
+' Esensors Websensor XML - Solarwinds Windows Script monitor
+'
+' http://www.solarwinds.com/documentation/en/flarehelp/SAM/content/sam-windows-script-monitor-sw3335.htm
+'
+'
+
+Option Explicit
+On Error Resume Next
+
+Dim cmdHost, cmdPort, cmdUrl, cmdDebug, cmdDecimalDelimiter, cmdSensor
+cmdSensor = ""
+cmdDecimalDelimiter = ""
+cmdPort = "80"
+cmdUrl = "ssetings.xml"
+
+Dim args, arg
+Dim expHost, expPort, expUrl, expDebug, expDecimalDelimiter, expSensor
+Set args = Wscript.Arguments
+
+If args.Count = 0 Then
+	Wscript.Echo "usage: csript.exe websensor-xml.vbs --host &lt;NAME&gt; [options]" &amp; vbCRLF &amp; _
+	    "" &amp; vbCRLF &amp; _
+	    "Mandatory parameters:" &amp; vbCRLF &amp; _
+	    "  --host &lt;NAME&gt;" &amp; vbCRLF &amp; _
+	    "    address of device on network (name or IP)." &amp; vbCRLF &amp; _
+	    "" &amp; vbCRLF &amp; _
+	    "Optional parameters:" &amp; vbCRLF &amp; _
+	    "  --port &lt;N&gt;, defaults to 80" &amp; vbCRLF &amp; _
+	    "  --url &lt;URL&gt;, defaults to ssetings.xml" &amp; vbCRLF &amp; _
+	    "  --debug, output a bit more information" &amp; vbCRLF &amp; _
+	    "  --decimal-delimiter &lt;char&gt;" &amp; vbCRLF &amp; _
+	    "    where char could be comma or any other char" &amp; vbCRLF &amp; _
+	    "  --sensor &lt;NAME&gt;, outputs status of specific sensor" &amp; vbCRLF &amp; _
+	    "" &amp; vbCRLF
+	Wscript.quit(4)
+End If
+
+For Each arg In args
+	If StrComp(arg, "--host") = 0 Then
+		expHost = True
+	ElseIf StrComp(arg, "--port") = 0 Then
+		expPort = True
+	ElseIf StrComp(arg, "--url") = 0 Then
+		expUrl = True
+	ElseIf StrComp(arg, "--debug") = 0 Then
+		cmdDebug = True
+	ElseIf StrComp(arg, "--decimal-delimiter") = 0 Then
+		expDecimalDelimiter = True
+	ElseIf StrComp(arg, "--sensor") = 0 Then
+		expSensor = True
+	ElseIf expHost Then
+		cmdHost = arg
+		expHost = False
+	ElseIf expPort Then
+		cmdPort = arg
+		expPort = False
+	ElseIf expUrl Then
+		cmdUrl = arg
+		expUrl = False
+	ElseIf expDecimalDelimiter Then
+		cmdDecimalDelimiter = arg
+		If Len(cmdDecimalDelimiter) &gt; 1 Then
+			WScript.Echo "--decimal-delimiter should be one character"
+			Wscript.quit(4)
+		End If
+		expDecimalDelimiter = False
+	ElseIf expSensor Then
+		cmdSensor = arg
+		expSensor = False
+	End If
+Next
+
+Dim url
+url = "http://" + cmdHost + ":" + cmdPort + "/" + cmdUrl
+
+Dim XMLstructDef(7, 1)
+XMLstructDef(0,0) = "tm0"
+XMLstructDef(0,1) = "Temperature"
+XMLstructDef(1,0) = "hu0"
+XMLstructDef(1,1) = "Humidity"
+XMLstructDef(2,0) = "il0"
+XMLstructDef(2,1) = "Illumination"
+XMLstructDef(3,0) = "vin"
+XMLstructDef(3,1) = "Voltage"
+XMLstructDef(4,0) = "thm"
+XMLstructDef(4,1) = "Thermistor"
+XMLstructDef(5,0) = "cin"
+XMLstructDef(5,1) = "Contact"
+XMLstructDef(6,0) = "fin"
+XMLstructDef(6,1) = "Flood"
+XMLstructDef(7,0) = "stu0"
+XMLstructDef(7,1) = "Alarm"
+
+Dim oXMLHTTP
+
+If cmdDebug Then
+	WScript.Echo "creating MSXML2.XMLHTTP.3.0 object"
+End If
+Set oXMLHTTP = CreateObject("MSXML2.XMLHTTP.3.0")
+
+If cmdDebug Then
+	WScript.Echo "sending HTTP request to [" + CStr(url) + "]"
+End If
+oXMLHTTP.Open "GET", url, False
+oXMLHTTP.Send
+
+If oXMLHTTP.Status &lt;&gt; 200 Then
+	WScript.Echo "Message.Temperature: HTTP status " + CStr(oXMLHTTP.Status) + ": " + CStr(oXMLHTTP.StatusText)
+	Wscript.quit(3)
+End If
+
+If cmdDebug Then
+	WScript.Echo "got HTTP response: " + oXMLHTTP.ResponseText
+End If
+
+Dim maxDim0
+maxDim0 = UBound(XMLstructDef, 1)
+
+Dim i
+For i = 0 to maxDim0
+    Dim xmlTag, sensorName
+    xmlTag = CStr(XMLstructDef(i, 0))
+    sensorName = CStr(XMLstructDef(i, 1))
+
+    if (StrComp(cmdSensor, "") = 0 OR StrComp(cmdSensor, "") &lt;&gt; 0 AND StrComp(sensorName, cmdSensor) = 0) Then
+		If cmdDebug Then
+			WScript.Echo xmlTag + " --&gt; " + sensorName
+		End If
+
+		Dim re, targetString, colMatch, objMatch
+		Set re = New regexp
+		With re
+		  .pattern = "&lt;" + xmlTag + "&gt;(.*)&lt;/" + xmlTag + "&gt;"
+		  .Global = True
+		  .IgnoreCase = True
+		End With
+		Set colMatch = re.Execute(oXMLHTTP.ResponseText)
+		For Each objMatch In colMatch
+			Dim v
+			v = CStr(objMatch.SubMatches.Item(0))
+
+			If StrComp(v, "ok") = 0 Then
+				v = 1
+			End If
+			If StrComp(v, "Alarm") = 0 Then
+				v = 0
+			End If
+
+			If (StrComp(cmdDecimalDelimiter, "") &lt;&gt; 0) Then
+				v = CStr(Replace(v, ",", ".")) ' do devices have regional settings?
+				v = CStr(Replace(v, ".", cmdDecimalDelimiter))
+			End If
+
+			WScript.Echo "Statistic." + CStr(sensorName) + ": " + CStr(v)
+		Next
+	End If
+Next
+
+Wscript.quit(0)
+</Value>
+							<ValueType>External</ValueType>
+							<Key>ScriptBody</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>ScriptEngine</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>vbscript</Value>
+							<ValueType>String</ValueType>
+							<Key>ScriptEngine</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>StatusRollupType</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>Worst</Value>
+							<ValueType>Option</ValueType>
+							<Key>StatusRollupType</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+				</Settings>
+				<Type>WindowsScript</Type>
+				<Thresholds />
+				<EvidenceType>None</EvidenceType>
+				<CategoryDisplayName></CategoryDisplayName>
+				<ComponentCategoryId i:nil="true" />
+				<DynamicColumnSettings>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4059</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaIndex>2</CommonFormulaIndex>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<Enabled>true</Enabled>
+							<TransformExpression>Round(${Statistic}, 0)</TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>1704</ID>
+						<Label>Temperature</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Temperature</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>100</CriticalLevel>
+							<CriticalPolls>5</CriticalPolls>
+							<CriticalPollsInterval>5</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4059</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>1706</ID>
+						<Label>Humidity</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Humidity</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4059</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>1708</ID>
+						<Label>Illumination</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Illumination</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4059</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>1710</ID>
+						<Label>Voltage</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Voltage</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4059</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>1712</ID>
+						<Label>Thermistor</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Thermistor</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4059</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>1714</ID>
+						<Label>Contact</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Contact</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4059</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>1716</ID>
+						<Label>Flood</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Flood</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4059</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>1718</ID>
+						<Label>Alarm</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Alarm</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+				</DynamicColumnSettings>
+				<VisibilityMode>Visible</VisibilityMode>
+				<ShortName></ShortName>
+				<ApplicationItemType></ApplicationItemType>
+				<ApplicationTemplateId>227</ApplicationTemplateId>
+				<UniqueId>ca241c9e-964f-472d-bbbc-a60824761d7c</UniqueId>
+				<ComponentCategoryName i:nil="true" />
+				<IsApplicationItemSpecific>false</IsApplicationItemSpecific>
+			</ComponentTemplate>
+		</ComponentTemplates>
+		<DeletedComponentTemplates />
+		<Id>227</Id>
+		<Name>Esensors Websensor</Name>
+		<IsMockTemplate>false</IsMockTemplate>
+		<Description></Description>
+		<Tags>
+			<TagInfo>
+				<Name>Esensors Websensor</Name>
+				<TemplateID>227</TemplateID>
+			</TagInfo>
+		</Tags>
+		<Created>2016-10-18T20:10:12.827Z</Created>
+		<LastModified>2016-10-28T03:41:45.617Z</LastModified>
+		<CustomApplicationType i:nil="true" />
+		<Version>1.0</Version>
+		<ViewID>0</ViewID>
+		<ViewXml i:nil="true" />
+		<ModuleVersion xmlns:d="http://schemas.datacontract.org/2004/07/System">
+			<d:_Build>4</d:_Build>
+			<d:_Major>6</d:_Major>
+			<d:_Minor>2</d:_Minor>
+			<d:_Revision>4242</d:_Revision>
+		</ModuleVersion>
+		<UniqueId>97441def-37f7-41bc-8a4b-7256af19b5db</UniqueId>
+	</ApplicationTemplate>
+</ArrayOfApplicationTemplate>
