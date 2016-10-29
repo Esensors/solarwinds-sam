@@ -124,7 +124,7 @@
 						<s:Value>
 							<Required>false</Required>
 							<SettingLevel>Template</SettingLevel>
-							<Value>--host ${IP} --port 4248 --url status.xml</Value>
+							<Value>--host ${IP} --port 80 --url status.xml</Value>
 							<ValueType>String</ValueType>
 							<Key>ScriptArguments</Key>
 						</s:Value>
